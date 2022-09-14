@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome Icons  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>Glassmorphic Calculator using JavaScript - @code.scientist x @codingtorque</title>
+	<style>
+	* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    background: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10rem;
+}
+
+.calculator {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 290px;
+    backdrop-filter: blur(16px) saturate(180%);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 20px;
+}
+
+.screen {
+    font-size: 45px;
+    color: white;
+    border-radius: 20px;
+    text-align: end;
+    width: 100%;
+    padding: 0px 10px;
+    border: none;
+    outline: none;
+    backdrop-filter: blur(16px) saturate(180%);
+    background: linear-gradient(45deg, rgb(114, 114, 114), #494949);
+    border-radius: 12px;
+}
+
+button {
+    height: 55px;
+    width: 55px;
+    font-size: 20px;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    margin: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+    backdrop-filter: blur(16px) saturate(180%);
+    background: linear-gradient(45deg, transparent, #494949);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.equalsToBtn {
+    width: 190%;
+    border-radius: 25px;
+    background: deepskyblue;
+    color: white;
+}
+	</style>
+</head>
+
+<body>
+<script>
+//Function To Display Values On screen
+function dis(value) {
+    document.getElementById("screen").value += value;
+}
+
+// Function For Evaluation
+function solve() {
+    let x = document.getElementById("screen").value;
+    let y = eval(x);
+    document.getElementById("screen").value = y;
+}
+
+//Function For clearing the screen
+function clr() {
+    document.getElementById("screen").value = ""
+}
+
+//backspacing
+function backspace() {
+    let screen = document.getElementById("screen").value;
+    document.getElementById("screen").value = screen.substring(0, screen.length - 1);
+}
+</script>
+    <div class="calculator">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <input type="text" class="screen" placeholder="0" id="screen">
+        <table>
+            <tr>
+                <td>
+                    <button style="color: #ff0000;" onclick="clr()">C</button>
+                </td>
+                <td>
+                    <button style="color: deepskyblue;" onclick="dis('/')">/</button>
+                </td>
+                <td>
+                    <button style="color: deepskyblue;" onclick="dis('%')">%</button>
+                </td>
+                <td>
+                    <button style="color: deepskyblue;" onclick="backspace()">
+                        <i class="fas fa-backspace"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="dis('7')">7</button>
+                </td>
+                <td>
+                    <button onclick="dis('8')">8</button>
+                </td>
+                <td>
+                    <button onclick="dis('9')">9</button>
+                </td>
+                <td>
+                    <button style="color: deepskyblue;" onclick="dis('*')">x</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="dis('4')">4</button>
+                </td>
+                <td>
+                    <button onclick="dis('5')">5</button>
+                </td>
+                <td>
+                    <button onclick="dis('6')">6</button>
+                </td>
+                <td>
+                    <button style="color: deepskyblue;" onclick="dis('-')">-</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="dis('1')">1</button>
+                </td>
+                <td>
+                    <button onclick="dis('2')">2</button>
+                </td>
+                <td>
+                    <button onclick="dis('3')">3</button>
+                </td>
+                <td>
+                    <button style="color: deepskyblue;" onclick="dis('+')">+</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="dis('0')">0</button>
+                </td>
+                <td>
+                    <button onclick="dis('.')">.</button>
+                </td>
+                <td>
+                    <button class="equalsToBtn" onclick="solve()">=</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
